@@ -1,0 +1,16 @@
+# Raw source notes (private input, never committed)
+source/
+sources/
+raw/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
