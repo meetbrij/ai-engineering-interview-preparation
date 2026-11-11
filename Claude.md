@@ -76,3 +76,12 @@ There is no "Why it matters" section and no code. Do not add Python examples unl
 - After writing a chapter, update README.md and check that all links resolve.
 - Never edit files in `sources/`.
 - Do not commit or push; Brijesh reviews and commits himself.
+## Must-include lines by chapter (from Brijesh's notes; say them in spoken form)
+- Ch3 Tokens and embeddings: if vectors are closer together they have similar meanings; if vectors point in the same direction they are related. Relationship is encoded by direction, meaning is encoded by closeness.
+- Ch6 Inference and generation: LLMs are stateless, have no persistent memory, cannot act on the world, and terminate after each generation. The model's value is in reasoning, not in serving as a knowledge store. Capabilities of an LLM: streaming, thinking, structured output, vision, tool calling, web search, embeddings. Temperature 0 is still not perfectly repeatable.
+- Ch18-19 Agents and tool calling: the LLM is the brain, tools are the hands. Agents are simply LLMs that run in a loop trying to achieve a goal. The model proposes; our code decides and acts.
+- When introducing a model family, give concrete examples (OpenAI GPT, Anthropic Claude, Google Gemini, Meta Llama), marked "(as of Mon YYYY)".
+- Always show how predictive and generative models are used together where relevant (for example model routing: a classifier picks the model, then the model generates).
+
+## Reusing Brijesh's earlier Learning Notes document
+Brijesh has a private Claude Docs "Learning Notes" document (banking-flavoured). Reuse explanations that work (for example the well-read new joiner analogy, the cache-types table, chunking table, BM25 and RRF worked example, MCP explanation, audit log vs SIEM) but rewrite in our spoken style and swap the industry per the analogy rule. Never put its link or private details in the repo.

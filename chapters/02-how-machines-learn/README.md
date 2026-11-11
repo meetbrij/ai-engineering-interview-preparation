@@ -105,7 +105,7 @@ Deep learning families you'll hear about:
 
 ### Logits and softmax
 
-At the end of a classification network, the last layer outputs raw scores called **logits**. They can be any number: positive, negative, large. A higher logit means the network favours that choice more.
+**A neural network produces logits, which are passed through the softmax function to convert them into probabilities.** At the end of a classification network, the last layer outputs raw scores called **logits**. They can be any number: positive, negative, large. A higher logit means the network favours that choice more.
 
 **Softmax** turns logits into probabilities: all positive, between 0 and 1, adding up to exactly 1.
 
@@ -158,7 +158,7 @@ A neural network is layers of neurons. Each neuron multiplies its inputs by weig
 
 ### Q5. What are logits and softmax?
 
-Logits are the raw, unnormalised scores from the last layer of a network. They can be any number, and a higher logit means the network favours that option. Softmax converts them into probabilities that are all between 0 and 1 and sum to exactly 1. For example logits of 2.5, 1.2 and 0.8 become roughly 69%, 19% and 13%. It matters for LLMs because at every step the model produces a logit for each token in its vocabulary, softmax turns those into probabilities, and the next token is sampled from them. Settings like temperature work on that distribution.
+A neural network produces logits, and those are passed through the softmax function to convert them into probabilities. Logits are the raw, unnormalised scores from the last layer of the network. They can be any number, and a higher logit means the network favours that option. Softmax converts them into probabilities that are all between 0 and 1 and sum to exactly 1. For example logits of 2.5, 1.2 and 0.8 become roughly 69%, 19% and 13%. It matters for LLMs because at every step the model produces a logit for each token in its vocabulary, softmax turns those into probabilities, and the next token is sampled from them. Settings like temperature work on that distribution.
 
 ### Q6. What's the difference between parameters and tokens?
 
@@ -204,7 +204,7 @@ Because labelling data by hand doesn't scale. In self-supervised learning the la
 - Supervised (labelled), unsupervised (no labels), reinforcement (rewards), and self-supervised (labels from the data itself, how LLMs are pre-trained).
 - Gradient descent reduces the loss by taking small steps against the gradient; the learning rate sets the step size.
 - Overfitting is memorising, underfitting is not learning; judge a model only on unseen data.
-- Logits are raw scores; softmax turns them into probabilities, which is where LLM sampling happens.
+- A neural network produces logits; softmax converts them into probabilities, which is where LLM sampling happens.
 
 ## 8. Further reading
 
