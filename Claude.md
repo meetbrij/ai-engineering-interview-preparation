@@ -8,6 +8,9 @@ doubles as interview preparation. It will be public on GitHub.
 
 ## Source material
 - `sources/` holds Brijesh's own notes (Notion PDF exports) and an interview answer bank.
+- `sources/` also holds two reference books (loose reference only, never copy verbatim, rewrite in our own words):
+  `01_ai_system_design_interview_prep.pdf` (primary: RAG, evaluation, hallucination, scaling, security, inference, production Q&A) and
+  `00_agentic_ai_prep.pdf` (agents only: definition, frameworks, protocols, mock interview scenarios). Skip their code, case studies, edge/computer-use/coding agents.
 - Use them as the starting point for content and coverage, but do not copy them blindly:
   reorganise, deepen, and correct them.
 - Known errors in the notes that must NOT be carried over:
@@ -19,6 +22,8 @@ doubles as interview preparation. It will be public on GitHub.
   - Quantisation commonly goes to 8-bit and 4-bit, not just 32→16-bit.
   - Distillation trains a small model to imitate a large model's outputs.
   - MCP does not "understand the query"; the LLM decides, MCP is the standard connection to tools/data.
+  - ACP (Agent Communication Protocol) was merged into A2A under the Linux Foundation in 2025; cover MCP and A2A only. AutoGen and Semantic Kernel are now succeeded by Microsoft Agent Framework (verify GA date in Microsoft docs).
+  - Unsourced numbers in the reference books (batching/paged-attention speedups, KV cache speedups, quantisation quality loss, retention periods) must be verified or dropped.
   - Remove unverified figures (e.g. GPT-4 parameter counts, model task-duration claims).
 
 ## Repository structure

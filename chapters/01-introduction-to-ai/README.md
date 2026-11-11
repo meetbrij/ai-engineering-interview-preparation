@@ -63,7 +63,7 @@ flowchart TB
 - **Machine learning** is the subset that learns from data.
 - **Deep learning** is ML using neural networks with many layers.
 - **Generative AI** is deep learning that creates new content. A **large language model (LLM)** is a generative model for text: trained on huge amounts of text to predict the next token (a small chunk of text, covered in [Chapter 3](../03-tokens-and-embeddings/README.md)).
-- An **AI agent** isn't a model type. It's a system built around an LLM that decides, uses tools and loops until a goal is met ([Chapter 17](../17-from-llm-calls-to-agents/README.md)).
+- An **AI agent** isn't a model type. It's a system built around an LLM that decides, uses tools and loops until a goal is met ([Chapter 18](../18-from-llm-calls-to-agents/README.md)).
 
 ### Predictive vs generative
 

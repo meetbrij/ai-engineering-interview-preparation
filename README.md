@@ -37,42 +37,44 @@ Each chapter explains a concept from scratch, shows where it is used in industry
 ### Part 4: Retrieval-Augmented Generation (RAG)
 
 11. [RAG fundamentals](chapters/11-rag-fundamentals/README.md): why RAG exists, parametric vs non-parametric memory, and the two pipelines.
-12. [Ingestion and chunking](chapters/12-ingestion-and-chunking/README.md): parsing documents, chunking strategies, overlap, parent-child and metadata.
-13. [Vector search and databases](chapters/13-vector-search-and-databases/README.md): approximate nearest neighbour search, BM25, dense and hybrid retrieval, and scaling an index.
-14. [Improving retrieval](chapters/14-improving-retrieval/README.md): query transformation, reranking, context expansion and agentic RAG.
-15. [Enterprise RAG](chapters/15-enterprise-rag/README.md): permission-aware retrieval, citations, conflicting documents and scale.
-16. [RAG vs fine-tuning vs long context](chapters/16-rag-vs-fine-tuning-vs-long-context/README.md): a decision framework you can defend.
+12. [Ingestion and chunking](chapters/12-ingestion-and-chunking/README.md): parsing documents, chunking strategies, metadata, incremental updates and re-indexing.
+13. [Vector search and databases](chapters/13-vector-search-and-databases/README.md): approximate nearest neighbour search, HNSW and IVF, BM25, dense and hybrid retrieval.
+14. [Improving retrieval](chapters/14-improving-retrieval/README.md): query transformation, reranking, context expansion, multi-hop and agentic RAG.
+15. [Enterprise RAG](chapters/15-enterprise-rag/README.md): permission-aware retrieval, citations, conflicting documents and PII.
+16. [Production RAG: architecture and scale](chapters/16-production-rag-architecture-and-scale/README.md): designing for 10 million to 100 million documents, latency, failures, real-time vs batch.
+17. [RAG vs fine-tuning vs long context](chapters/17-rag-vs-fine-tuning-vs-long-context/README.md): a decision framework you can defend.
 
 ### Part 5: Agents
 
-17. [From LLM calls to agents](chapters/17-from-llm-calls-to-agents/README.md): the agent loop, ReAct, agent types, and workflow vs agent.
-18. [Tool calling](chapters/18-tool-calling/README.md): tool schemas, who executes what, tool design, errors and permissions.
-19. [Agent protocols: MCP and A2A](chapters/19-agent-protocols-mcp-and-a2a/README.md): standard connections to tools, data and other agents.
-20. [Agent memory and state](chapters/20-agent-memory-and-state/README.md): short-term, long-term and episodic memory, and keeping memory fresh.
-21. [Orchestration and harnesses](chapters/21-orchestration-and-harnesses/README.md): control loops, frameworks, checkpoints and human-in-the-loop gates.
-22. [Multi-agent systems](chapters/22-multi-agent-systems/README.md): supervisors and workers, error propagation, cost and tracing.
-23. [Agent-user interaction](chapters/23-agent-user-interaction/README.md): streaming, steerable agents, AG-UI and voice agents.
-24. [Agent reliability and learning](chapters/24-agent-reliability-and-learning/README.md): loops, wrong tool choices, compounding error and learning from production.
+18. [From LLM calls to agents](chapters/18-from-llm-calls-to-agents/README.md): the agent loop, ReAct, agent types, and workflow vs agent.
+19. [Tool calling](chapters/19-tool-calling/README.md): tool schemas, who executes what, tool design, errors and permissions.
+20. [Agent protocols: MCP and A2A](chapters/20-agent-protocols-mcp-and-a2a/README.md): standard connections to tools, data and other agents.
+21. [Agent memory and state](chapters/21-agent-memory-and-state/README.md): short-term, long-term and episodic memory, and keeping memory fresh.
+22. [Orchestration and harnesses](chapters/22-orchestration-and-harnesses/README.md): control loops, frameworks, checkpoints and human-in-the-loop gates.
+23. [Multi-agent systems](chapters/23-multi-agent-systems/README.md): supervisors and workers, error propagation, cost and tracing.
+24. [Agent-user interaction](chapters/24-agent-user-interaction/README.md): streaming, steerable agents, AG-UI and voice agents.
+25. [Agent reliability and learning](chapters/25-agent-reliability-and-learning/README.md): loops, wrong tool choices, compounding error and learning from production.
 
 ### Part 6: Quality and safety
 
-25. [Evaluation fundamentals](chapters/25-evaluation-fundamentals/README.md): golden datasets, LLM-as-judge, benchmarks and why high scores can still disappoint users.
-26. [Evaluating RAG and agents](chapters/26-evaluating-rag-and-agents/README.md): retrieval and generation metrics, agent trajectories and measuring a reranker.
-27. [Hallucination and grounding](chapters/27-hallucination-and-grounding/README.md): layers that reduce hallucination, abstention and confidence.
-28. [Guardrails and AI security](chapters/28-guardrails-and-ai-security/README.md): prompt injection, jailbreaks, least privilege and PII redaction.
-29. [Privacy, governance and compliance](chapters/29-privacy-governance-and-compliance/README.md): data retention, identity, audit trails and regulation.
+26. [Evaluation fundamentals](chapters/26-evaluation-fundamentals/README.md): golden datasets, LLM-as-judge, benchmarks and why high scores can still disappoint users.
+27. [Evaluating RAG and agents](chapters/27-evaluating-rag-and-agents/README.md): retrieval and generation metrics, agent trajectories and measuring a reranker.
+28. [Hallucination and grounding](chapters/28-hallucination-and-grounding/README.md): layers that reduce hallucination, citations, confidence and refusal.
+29. [Guardrails and AI security](chapters/29-guardrails-and-ai-security/README.md): prompt injection, jailbreaks, least privilege and PII redaction.
+30. [Privacy, governance and compliance](chapters/30-privacy-governance-and-compliance/README.md): data retention, identity, audit trails and regulation.
 
 ### Part 7: Production (LLMOps)
 
-30. [Cost, latency and caching](chapters/30-cost-latency-and-caching/README.md): cutting cost, time to first token, prompt and semantic caching.
-31. [Observability and LLMOps](chapters/31-observability-and-llmops/README.md): tracing, prompt management, safe rollouts and feedback loops.
-32. [Self-hosting open-weight models](chapters/32-self-hosting-open-weight-models/README.md): local and private deployment, batching, KV cache and cost estimates.
-33. [Reliability, scaling and streaming](chapters/33-reliability-scaling-and-streaming/README.md): retries, fallbacks, SSE streaming and surviving 100x traffic.
-34. [LLM gateways and routing](chapters/34-llm-gateways-and-routing/README.md): one front door for many teams, model routers and rate limits.
-35. [Cloud reference architectures and multi-tenancy](chapters/35-cloud-reference-architectures-and-multi-tenancy/README.md): AWS, Azure and Google Cloud patterns and tenant isolation.
+31. [Cost, latency and caching](chapters/31-cost-latency-and-caching/README.md): cutting cost, time to first token, prompt and semantic caching.
+32. [Observability and LLMOps](chapters/32-observability-and-llmops/README.md): tracing, prompt management, safe rollouts, rollback and feedback loops.
+33. [Inference engineering](chapters/33-inference-engineering/README.md): prefill and decode, KV cache, batching, quantisation and serving at scale.
+34. [Self-hosting open-weight models](chapters/34-self-hosting-open-weight-models/README.md): local and private deployment, and cost estimates.
+35. [Reliability, scaling and streaming](chapters/35-reliability-scaling-and-streaming/README.md): retries, fallbacks, SSE streaming and surviving 100x traffic.
+36. [LLM gateways and routing](chapters/36-llm-gateways-and-routing/README.md): one front door for many teams, model routers and rate limits.
+37. [Cloud reference architectures and multi-tenancy](chapters/37-cloud-reference-architectures-and-multi-tenancy/README.md): AWS, Azure and Google Cloud patterns and tenant isolation.
 
 ### Part 8: Delivery and interviews
 
-36. [Forward deployed engineering](chapters/36-forward-deployed-engineering/README.md): discovery, scoping, proof of concept to production, and talking to clients.
-37. [AI system design](chapters/37-ai-system-design/README.md): a repeatable method for design questions, with worked examples.
-38. [Interview playbook](chapters/38-interview-playbook/README.md): answer structure, common traps and a rapid-fire revision sheet.
+38. [Forward deployed engineering](chapters/38-forward-deployed-engineering/README.md): discovery, scoping, proof of concept to production, and talking to clients.
+39. [AI system design](chapters/39-ai-system-design/README.md): a repeatable method for design questions, with worked examples.
+40. [Interview playbook](chapters/40-interview-playbook/README.md): answer structure, common traps and a rapid-fire revision sheet.
