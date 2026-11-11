@@ -24,7 +24,6 @@ doubles as interview preparation. It will be public on GitHub.
 ## Repository structure
 - `README.md`: the handbook's table of contents, grouped by part, linking to every chapter, plus a short "how to use this handbook" section.
 - `chapters/NN-chapter-slug/README.md`: one folder per chapter, numbered in learning order.
-- `chapters/NN-chapter-slug/examples/`: optional small Python examples for that chapter.
 - `sources/`: Brijesh's raw notes (input only; never edit).
 
 ## Learning order (each chapter may only rely on concepts from earlier chapters)
@@ -33,21 +32,18 @@ Part 5 Agents · Part 6 Quality and safety · Part 7 Production (LLMOps) · Part
 The table of contents in README.md is the source of truth for chapter names and order.
 
 ## Chapter template (use these sections, in this order)
-1. **Why it matters**: 2–3 lines on where this shows up in real systems.
-2. **The concept, from scratch**: plain English first, then the precise technical version. Define every term the first time it appears.
-3. **Analogies across industries**: see the analogy rule below.
-4. **Diagram**: in Mermaid (GitHub renders it). At least one per chapter where a picture helps.
-5. **How it's used in industry**: 2–4 short real-world use cases from different industries.
-6. **Common misconceptions**: what people get wrong, including interview traps.
-7. **Python example** (only where it genuinely helps understanding): small, runnable, minimal dependencies, explained line by line. Put longer ones in `examples/`.
-8. **Interview questions**: easiest first. Each with a model answer in this format:
-   - **Say first:** the 1–2 sentence answer to open with.
-   - **Then cover:** the key points, in speaking order.
-   - **Architect angle:** the trade-off, cost, governance or client point that lifts the answer.
-   - **Trap:** the common wrong answer or likely follow-up.
-9. **Scenario exercise**: one short client-style case with incomplete information, to answer from memory. Put a model answer inside a collapsed `<details>` block so it can be attempted first.
-10. **Key takeaways**: 3–5 one-line points for revision.
-11. **Further reading**: 2–5 credible sources (official docs, papers, vendor engineering blogs).
+Chapters are short and visual: a picture first, a few spoken-style sentences after it.
+1. **The concept, from scratch**: plain English first, then the precise version, in the words you would say in an interview. Define every term the first time it appears. Prefer a diagram plus a few lines over paragraphs.
+2. **Analogies across industries**: see the analogy rule below.
+3. **Diagrams**: in Mermaid (GitHub renders it). Use several where a picture explains faster than text.
+4. **How it's used in industry**: 2-4 short real-world use cases from different industries.
+5. **Common misconceptions**: what people get wrong, including interview traps.
+6. **Interview questions**: easiest first. Each has a complete model answer written the way an engineer would say it out loud, in first person, in flowing prose. The answer must stand on its own, even if it repeats content from earlier in the chapter. Do not force a fixed structure (no "say first / then cover / architect angle / trap" headings). Mention trade-offs, cost, governance or likely follow-ups inside the answer only where they naturally belong.
+7. **Scenario exercise**: one short client-style case with incomplete information, to answer from memory. Put a model answer inside a collapsed `<details>` block so it can be attempted first.
+8. **Key takeaways**: 3-5 one-line points for revision.
+9. **Further reading**: 2-5 credible sources (official docs, papers, vendor engineering blogs).
+
+There is no "Why it matters" section and no code. Do not add Python examples unless Brijesh asks for one for a specific chapter or topic.
 
 ## Analogy rule
 - Do not default to banking. Rotate across industries: banking, insurance, healthcare,
@@ -65,10 +61,10 @@ The table of contents in README.md is the source of truth for chapter names and 
 - Never invent statistics, benchmarks or quotes.
 
 ## Writing style
-- Plain, direct English. Short paragraphs. Explain like a senior engineer teaching a smart colleague who is new to AI.
+- Spoken, conversational English: write the way a confident engineer talks in an interview, not like a textbook. Short sentences. Use the exact phrases an interviewer expects to hear (for example: traditional code is deterministic, generative AI is probabilistic; predictive vs generative).
 - Prose for explanations; lists only where items are genuinely parallel. No filler, no hype, no emojis.
 - Link related chapters inline (relative links) the first time a concept from another chapter appears.
-- Each chapter should take about 20–40 minutes to read.
+- Each chapter should take about 10-20 minutes to read. Cut anything a diagram or one sentence can replace.
 
 ## Workflow
 - Work one part at a time. Before writing a part, propose the chapter outlines and wait for approval.

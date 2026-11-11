@@ -7,8 +7,8 @@ Each chapter explains a concept from scratch, shows where it is used in industry
 ## How to use this handbook
 
 - **Read in order the first time.** Chapters are numbered in learning order, and each one relies only on ideas from earlier chapters.
-- **Every chapter follows the same template:** why it matters, the concept from scratch, analogies, a diagram, industry use cases, common misconceptions, an optional Python example, interview questions, a scenario exercise, key takeaways and further reading. A chapter takes about 20-40 minutes.
-- **Practise out loud.** Each interview question has a model answer in four parts: *Say first*, *Then cover*, *Architect angle* and *Trap*. Cover the answer, say yours aloud, then compare.
+- **Every chapter follows the same short template:** the concept in interview language, analogies, diagrams, industry use cases, common misconceptions, interview questions, a scenario exercise, key takeaways and further reading. A chapter takes about 10-20 minutes.
+- **Practise out loud.** Each interview question comes with a full model answer written the way you would say it. Cover the answer, say yours aloud, then compare.
 - **Attempt the scenario exercise before opening the answer.** The model answer is collapsed on purpose.
 - **Revise from the key takeaways.** The night before an interview, read only the "Key takeaways" section of each chapter.
 - **Check dates on fast-moving facts.** Model names, context sizes, prices and protocol versions change quickly. They are marked "(as of Mon YYYY)" and linked to a source. Treat older marks with suspicion.

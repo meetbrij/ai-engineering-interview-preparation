@@ -1,127 +1,118 @@
 # Chapter 1: Introduction to AI
 
-## 1. Why it matters
+## 1. The concept, from scratch
 
-Every later chapter in this handbook assumes you can place a technology on the AI map: what is machine learning, what is a language model, and what is just software with a model call in it. In client conversations and interviews, people mix these terms constantly. Being the person who uses them precisely is the first sign of seniority.
+### Traditional software vs machine learning
 
-This chapter also defines the job. AI engineering is a different discipline from classic machine learning (ML) engineering, and most roles you are preparing for sit on the AI engineering side.
+Traditional software is **rule-based and deterministic**. A developer writes the rules, the computer follows them, and the same input always gives the same output.
 
-## 2. The concept, from scratch
+Machine learning flips this. You don't write the rules. You give the machine lots of examples (inputs and the right answers) and it **learns the rules itself**.
 
-### 2.1 Plain English first
+```mermaid
+flowchart LR
+    subgraph T["Traditional programming"]
+        direction LR
+        R1[Rules written by a developer] --> P1[Program]
+        D1[Data] --> P1
+        P1 --> A1[Answers]
+    end
+    subgraph M["Machine learning"]
+        direction LR
+        D2[Data] --> L[Learning]
+        A2[Known answers] --> L
+        L --> R2[Rules, stored as numbers]
+    end
+```
 
-Traditional software is a set of instructions. A developer thinks through every situation, writes the rules, and the computer follows them exactly. Give it the same input and you get the same output. This works well when the rules are known and stable: calculating tax, moving money between accounts, routing a parcel by postcode.
+Use code when you can write the rules (tax calculation, routing a parcel by postcode). Use ML when you can't, because there are too many rules or they are too fuzzy (is this email phishing, will demand spike next week).
 
-It works badly when the rules are too many or too fuzzy to write down. Nobody can write the rules for "is this photo a cat", "is this email a phishing attempt" or "what will demand for umbrellas be next week". But there are plenty of examples of each. **Artificial intelligence (AI)** is the broad name for getting machines to do tasks that normally need human judgement. **Machine learning** is the most successful way of doing it: instead of writing the rules, you show the machine examples and let it find the rules itself.
+### Deterministic vs probabilistic
 
-**Generative AI** goes one step further. Most machine learning models are built to *decide* something (spam or not spam). Generative models are built to *produce* something new: a paragraph, an image, a block of code, a summary of a meeting. The best-known generative models for text are **large language models (LLMs)**: systems trained on very large amounts of text to continue a piece of text sensibly.
+This is the sentence to remember: **traditional software is deterministic, generative AI is probabilistic.**
 
-### 2.2 The precise version
+A normal function returns the same answer every time. A generative model works out a probability for every possible next piece of text and *samples* from them. Ask twice, you may get two different answers, both reasonable.
 
-The terms nest inside each other:
+```mermaid
+flowchart LR
+    I1[Same input] --> C[Traditional code]
+    C --> O1[Same output, every time]
+    I2[Same input] --> G[Generative model]
+    G --> A[Answer A]
+    G --> B[Answer B]
+    G --> D[Answer C]
+```
 
-| Term | Definition | Example |
-|---|---|---|
-| **Artificial intelligence** | Any technique that lets machines perform tasks that normally require human intelligence. Includes approaches that do not learn, such as hand-written expert-system rules. | A chess engine, a claims rules engine, a chatbot |
-| **Machine learning (ML)** | The subset of AI where a model's behaviour is learned from data instead of being programmed explicitly. | A model that predicts which claims are fraudulent |
-| **Deep learning (DL)** | The subset of ML that uses neural networks with many layers. Strong on images, audio and text. | Image classifiers, speech recognition, the networks inside LLMs |
-| **Generative AI** | The subset of deep learning whose models generate new content (text, images, audio, video, code). | An LLM drafting an email, an image model creating a product photo |
+That one difference drives most of AI engineering. You can't unit-test a probabilistic system the way you test a function. You have to **evaluate** it, add **guardrails**, and design for the occasional wrong answer.
 
-Two clarifications that interviewers like:
-
-- AI is wider than ML. A rules engine that gives a decision can be called AI in the historical sense even though it learns nothing. When someone says "AI" today they almost always mean ML or generative AI, but it is worth knowing the difference.
-- Agents are not a model type. An **AI agent** is a *system* built around an LLM: the model decides what to do, calls tools, looks at results and repeats until a goal is met. It sits on top of generative AI. [Chapter 17](../17-from-llm-calls-to-agents/README.md) covers it properly.
-
-### 2.3 Three ways a machine can learn (preview)
-
-Machine learning has three main styles, covered in [Chapter 2](../02-how-machines-learn/README.md):
-
-- **Supervised learning:** learn from labelled examples (input and the right answer).
-- **Unsupervised learning:** find structure in data that has no labels.
-- **Reinforcement learning:** learn by trial and error, guided by rewards.
-
-For now, hold on to one idea: in ML, **the model's rules are stored as numbers learned from data**, not as `if` statements written by a developer.
-
-### 2.4 Discriminative vs generative models
-
-Deep learning models fall into two families.
-
-- **Discriminative models** answer "which one?" or "how much?" They classify, predict or score: this loan applicant is high risk, this scan shows a fracture, next month's sales will be 4,200 units. They are usually trained on labelled data.
-- **Generative models** learn the pattern of the data itself and can then produce new samples that look like it. LLMs generate text one small piece at a time. Diffusion models generate images by starting from random noise and removing it step by step. Both are generative, but they work differently (Chapters [4](../04-transformers-and-attention/README.md) and [8](../08-the-model-landscape/README.md)).
-
-An LLM is, at its core, a model trained to predict the next piece of text, called a **token** ([Chapter 3](../03-tokens-and-embeddings/README.md)). Doing that billions of times over huge amounts of text produces abilities nobody wrote by hand: summarising, translating, writing code, following instructions. That is why one model can serve so many tasks.
-
-### 2.5 AI vs AGI
-
-**Artificial general intelligence (AGI)** usually means AI that can match human ability across most cognitive tasks, rather than excelling at one narrow thing. Everything in production today, including the most capable LLMs, is narrow or "general-purpose within limits". There is no agreed, testable definition of AGI, and experts disagree on how close or far it is. In an interview, say exactly that: define it, say it is not what you are building with, and avoid predictions.
-
-### 2.6 What AI engineering is
-
-Training a large model from scratch needs huge datasets, specialised hardware and very large budgets, so almost no company does it. Instead, a small number of providers build **foundation models**: general-purpose models, often multimodal (they handle text, images, audio and more), that can be adapted to many tasks. Everyone else builds products on top.
-
-**AI engineering** is the discipline of turning foundation models into reliable products. It covers choosing a model, shaping its behaviour (prompts, retrieval, fine-tuning, agents), measuring quality, and running the result safely and affordably.
-
-This differs from ML engineering, which centres on training models from data:
-
-| | ML engineering | AI engineering |
-|---|---|---|
-| Starting point | Your data | A pretrained foundation model |
-| Main work | Feature engineering, training, tuning a model | Prompting, retrieval, tool use, evaluation, guardrails |
-| Typical output | A model you trained | A product that calls a model you did not train |
-| Hard part | Getting a good model | Getting a *reliable, safe, affordable system* around a capable but unpredictable model |
-
-A good one-sentence version: **creating a model is machine learning; making it work reliably in the real world is AI engineering.**
-
-### 2.7 What "production-ready" means
-
-A demo that works on three hand-picked questions is not a product. AI products are judged on five things, and they pull against each other:
-
-- **Quality:** outputs are accurate and useful.
-- **Safety:** harmful or risky behaviour is reduced.
-- **Latency:** responses arrive within the time your users or SLA allow.
-- **Cost:** token and infrastructure spend stays inside the budget.
-- **Feedback:** the system learns from real use and keeps improving.
-
-Making one better usually costs another. A larger model raises quality and raises cost and latency. Tight guardrails raise safety and may lower usefulness. Most of your design decisions in later chapters are trade-offs between these five.
-
-### 2.8 The AI engineering lifecycle
-
-The rest of the handbook follows this loop:
-
-1. **Business use case:** what problem are we solving, and is AI the right tool?
-2. **Model choice:** which base model, within what constraints?
-3. **Evaluation:** how will we measure success? Decide this *before* building.
-4. **Improve the output:** prompts first, then retrieval (RAG), agents or fine-tuning if needed.
-5. **Production architecture:** make it reliable.
-6. **Monitoring:** track failures and cost.
-7. **Feedback loop:** keep improving.
-
-Notice evaluation comes early. Teams that skip it end up guessing whether each change helped.
-
-## 3. Analogies across industries
-
-- **Rules vs learning (insurance).** A traditional claims system is like a rulebook written by senior underwriters: "refer any claim over 10,000". An ML system is like a new adjuster who has reviewed ten thousand past claims and has absorbed which ones the seniors referred. The rulebook is exact but only as good as what its authors thought of. The adjuster picks up patterns nobody wrote down, but occasionally gets one confidently wrong.
-- **Discriminative vs generative (healthcare).** A discriminative model is the radiologist who reads a scan and says "fracture: yes or no". A generative model is the same radiologist dictating the full written report. Different task, different risk: a wrong yes/no is one error, while a fluent report can contain a sentence that sounds right and is invented.
-- **AI engineering vs ML engineering (retail).** ML engineering is like a manufacturer designing and producing a new kind of engine. AI engineering is like a retailer who buys proven engines and builds reliable vehicles around them: choosing the right one, adding brakes (guardrails), a dashboard (monitoring) and a service schedule (evaluation and updates). Most businesses are in the second group.
-
-## 4. Diagram
-
-How the terms nest:
+### How the terms nest
 
 ```mermaid
 flowchart TB
-    subgraph AI["Artificial intelligence: machines doing tasks that need human-like judgement"]
-        subgraph ML["Machine learning: behaviour learned from examples"]
+    subgraph AI["AI: machines doing tasks that need human-like judgement"]
+        subgraph ML["Machine learning: rules learned from examples"]
             subgraph DL["Deep learning: neural networks with many layers"]
                 subgraph GEN["Generative AI: models that create new content"]
-                    LLM["LLMs (text, code), diffusion models (images), audio and video models"]
+                    LLM["LLMs, image, audio and video models"]
                 end
             end
         end
     end
 ```
 
-The AI engineering lifecycle:
+- **AI** is the broad goal. It also includes non-learning approaches like hand-written expert-system rules.
+- **Machine learning** is the subset that learns from data.
+- **Deep learning** is ML using neural networks with many layers.
+- **Generative AI** is deep learning that creates new content. A **large language model (LLM)** is a generative model for text: trained on huge amounts of text to predict the next token (a small chunk of text, covered in [Chapter 3](../03-tokens-and-embeddings/README.md)).
+- An **AI agent** isn't a model type. It's a system built around an LLM that decides, uses tools and loops until a goal is met ([Chapter 17](../17-from-llm-calls-to-agents/README.md)).
+
+### Predictive vs generative
+
+Models do one of two jobs.
+
+```mermaid
+flowchart LR
+    subgraph P["Predictive (discriminative)"]
+        direction LR
+        X1[Claim details] --> M1[Model] --> Y1["Fraud risk: 0.82"]
+    end
+    subgraph G["Generative"]
+        direction LR
+        X2[Claim documents] --> M2[Model] --> Y2["A new written case summary"]
+    end
+```
+
+- **Predictive AI** (the technical term for the model type is *discriminative*) decides or forecasts: classify, score, rank, predict a number. Fraud or not fraud. Next month's sales. It's trained on labelled data and gives a bounded answer.
+- **Generative AI** creates new content: text, images, code, audio. It learns the pattern of the data itself and produces new samples that look like it.
+
+Predictive AI answers "which one?" or "how much?". Generative AI answers "write me one." Most real systems use both: a predictive model scores the claim, a generative model drafts the summary.
+
+### Three ways a machine learns (preview)
+
+**Supervised** (labelled examples), **unsupervised** (find structure with no labels), **reinforcement** (trial and error with rewards). Details in [Chapter 2](../02-how-machines-learn/README.md).
+
+### AI vs AGI
+
+**AGI** (artificial general intelligence) means AI that matches human ability across most cognitive tasks. What we build with today is narrow or general-purpose within limits. There is no agreed definition or test for AGI, and experts disagree on the timeline, so don't predict dates.
+
+### What AI engineering is
+
+Almost nobody trains a large model from scratch: it takes huge datasets, specialist hardware and very large budgets. A few providers build **foundation models**: general-purpose, often multimodal models (text, image, audio) that can be adapted to many tasks. Everyone else builds on top of them.
+
+```mermaid
+flowchart LR
+    subgraph ML["ML engineering"]
+        direction LR
+        A1[Your data] --> A2[Train a model] --> A3[Model]
+    end
+    subgraph AIE["AI engineering"]
+        direction LR
+        B1[Foundation model] --> B2["Prompt, retrieval, tools, fine-tuning"] --> B3["Reliable product"]
+    end
+```
+
+**Creating a model is machine learning. Making it work reliably in the real world is AI engineering.** The job is quality, safety, latency, cost and feedback, and those five pull against each other. A bigger model gives better quality and costs more and runs slower.
+
+### The lifecycle
 
 ```mermaid
 flowchart LR
@@ -131,132 +122,71 @@ flowchart LR
     D --> E[Production architecture]
     E --> F[Monitoring]
     F --> G[Feedback loop]
-    G -.->|new failures and data| C
+    G -.-> C
 ```
 
-## 5. How it's used in industry
+Evaluation comes early. If you can't measure it, you can't tell whether a change helped.
 
-- **Insurance: claims triage.** A discriminative ML model scores incoming claims for fraud risk and routes high scores to a human investigator. A generative model then drafts the summary of the case for that investigator. Two kinds of AI in one workflow, each doing what it is good at.
-- **Healthcare: clinical documentation.** An LLM turns a recorded consultation into a draft note for the doctor to review and sign. The human stays accountable, because the draft can contain plausible mistakes.
-- **E-commerce: product search and support.** An LLM answers questions about orders and returns using the retailer's own policies, supplied at question time. Conventional ML ranks search results. Generative AI handles language, ML handles scoring.
-- **Logistics: exception handling.** A forecasting model predicts delays. When a shipment is at risk, a workflow uses an LLM to read the carrier's free-text emails and extract the new delivery date into structured fields.
+## 2. Analogies across industries
 
-## 6. Common misconceptions
+- **Rules vs learning (insurance).** Traditional code is the underwriting rulebook: "refer any claim over 10,000". ML is a new adjuster who has seen ten thousand claims and picked up patterns nobody wrote down. The rulebook is exact but limited by what its authors thought of. The adjuster is more flexible and sometimes confidently wrong.
+- **Predictive vs generative (healthcare).** Predictive is the radiologist saying "fracture: yes or no". Generative is the same radiologist dictating the full report. A wrong yes/no is one bounded error. A fluent report can hide one invented sentence.
+- **AI engineering vs ML engineering (retail).** ML engineering designs a new engine. AI engineering buys a proven engine and builds a reliable vehicle around it, with brakes (guardrails), a dashboard (monitoring) and a service schedule (evaluation). Most companies are in the second business.
 
-- **"AI, ML and deep learning are the same thing."** They are nested. AI is the widest; generative AI is the narrowest of the four terms in this chapter.
-- **"Generative AI replaced traditional ML."** No. Forecasting, fraud scoring, ranking and recommendations are still mostly classical ML, often cheaper and more predictable than an LLM. Choosing the simpler tool is a mark of a good engineer.
-- **"An LLM is a database of facts."** It stores patterns in numbers learned from training data, not retrievable records. It can state something false with total confidence, which is why Part 4 (RAG) and Part 6 (quality and safety) exist.
-- **"AI engineering means training models."** Mostly it does not. It means building reliable systems around models you did not train.
-- **"Agents are a type of model."** They are systems built around a model.
-- **"More AI is always better."** If the sequence of steps is known and fixed, plain code or a fixed workflow is usually more reliable, cheaper and easier to audit than an autonomous agent.
-- **Interview trap:** answering "what is AI?" with a definition of an LLM. Give the nested picture first, then place LLMs inside it.
+## 3. How it's used in industry
 
-## 7. Python example
+- **Insurance, claims triage.** A predictive model scores claims for fraud risk. A generative model drafts the case summary for the investigator.
+- **Healthcare, clinical notes.** An LLM turns a recorded consultation into a draft note. The doctor reviews and signs, because the draft can contain plausible mistakes.
+- **E-commerce, support.** An LLM answers order and returns questions using the retailer's own policies. Classical ML still ranks the search results.
+- **Logistics, delays.** A forecasting model predicts which shipments will be late. An LLM reads carriers' free-text emails and pulls the new delivery date into a structured field.
 
-This tiny example shows the central difference between programming and machine learning: a human writes a rule versus the machine finds the rule from past examples. It uses plain Python with no libraries.
+## 4. Common misconceptions
 
-```python
-# Past claims: (claim amount in thousands, did an adjuster send it for review?)
-history = [(1.2, False), (2.5, False), (3.1, False), (4.8, False), (6.0, False),
-           (7.5, True), (8.2, True), (9.9, True), (12.0, True), (15.5, True)]
+- **"AI, ML and deep learning are the same thing."** They're nested, as in the diagram.
+- **"Generative AI replaced classical ML."** No. Forecasting, fraud scoring and ranking are still mostly classical ML, often cheaper and more predictable. Picking the simpler tool is a sign of a good engineer.
+- **"An LLM is a database of facts."** It stores learned patterns, not records. It can state something false with full confidence (hallucination, [Chapter 6](../06-inference-and-generation/README.md)).
+- **"An LLM predicts the next word, so it's a predictive model."** Interview trap. An LLM does predict the next token, but that's how it *generates*. In the predictive-vs-generative split it's a generative model, because its output is new content, not a label or forecast.
+- **"AI engineers train LLMs."** Mostly they don't. They build systems around models someone else trained.
+- **"Agents are a type of model."** They're systems built around a model.
+- **"More AI is better."** If the steps are known and fixed, plain code or a fixed workflow is more reliable, cheaper and easier to audit.
 
+## 5. Interview questions
 
-def rule_based(amount):
-    """Traditional programming: a human writes the rule."""
-    return amount > 10
+### Q1. What's the difference between AI, machine learning, deep learning and generative AI?
 
+They're nested. AI is the broad goal of getting machines to do tasks that normally need human judgement. Machine learning is the part of AI where the system learns its rules from data instead of a developer writing them. Deep learning is machine learning using neural networks with many layers, and it's what powers things like image recognition and speech. Generative AI sits inside deep learning: models that create new content like text, images or code. An LLM is a generative model for text. I'd also mention that AI is slightly wider than ML, because old-style rule-based expert systems are AI too even though they don't learn. And agents aren't a further layer of models, they're systems built on top of an LLM.
 
-def learn_threshold(examples):
-    """Machine learning in miniature: pick the cut-off that best fits past decisions."""
-    best_cutoff, best_correct = None, -1
-    for cutoff, _ in examples:  # try every amount we have seen as a cut-off
-        correct = sum((amount > cutoff) == reviewed for amount, reviewed in examples)
-        if correct > best_correct:
-            best_cutoff, best_correct = cutoff, correct
-    return best_cutoff
+### Q2. How is traditional programming different from machine learning and generative AI?
 
+In traditional programming I write the rules and the program applies them, so it's deterministic: same input, same output, easy to test and audit. In machine learning I give the system examples and it learns the rules, so the behaviour is statistical. It's right most of the time, not all of the time. Generative AI goes further and is probabilistic in how it produces output: it calculates probabilities for the next token and samples, so the same prompt can give different answers. That changes how I engineer it. I can't just unit-test it, I need evaluation sets, guardrails and monitoring. And it's why, if the rules are known and stable, I'd still write normal code. It's cheaper, faster and fully explainable to a regulator.
 
-def accuracy(predict, examples):
-    return sum(predict(amount) == reviewed for amount, reviewed in examples) / len(examples)
+### Q3. What's the difference between predictive and generative AI?
 
+Predictive AI, which technically we call discriminative models, decides or forecasts something: classify this transaction as fraud or not, predict next month's demand, score this lead. It's trained on labelled data and gives a bounded answer. Generative AI creates new content: a summary, an email, an image, code. It learns the pattern of the data and produces new samples. A good example is an insurer: a predictive model scores the claim for fraud risk, then a generative model writes the case summary for the investigator. The risk profile is different too. A wrong prediction is one wrong label. A generative output can read perfectly well and still contain something invented, so it needs grounding, review or guardrails. And if they ask whether an LLM is predictive because it predicts the next token, I'd say it's a generative model, because the output is new content rather than a label or forecast.
 
-learned_cutoff = learn_threshold(history)
-learned = lambda amount: amount > learned_cutoff
+### Q4. What's AI engineering, and how is it different from ML engineering?
 
-print(f"Hand-written rule accuracy: {accuracy(rule_based, history):.0%}")
-print(f"Learned cut-off: {learned_cutoff}  accuracy: {accuracy(learned, history):.0%}")
-print("New claim of 7.0 ->", "review" if learned(7.0) else "auto-approve", "(learned)")
-```
-
-Output:
-
-```text
-Hand-written rule accuracy: 70%
-Learned cut-off: 6.0  accuracy: 100%
-New claim of 7.0 -> review (learned)
-```
-
-Line by line:
-
-- `history` is the training data: inputs (claim amount) with the right answer (reviewed or not). This is **labelled data**.
-- `rule_based` is a developer's guess. It only catches claims above 10, so it misses the three claims between 7.5 and 9.9 that adjusters did review.
-- `learn_threshold` tries each amount as a cut-off and keeps the one that agrees most often with past decisions. The "rule" (the number 6.0) came from the data, not from a person.
-- `accuracy` measures how often a rule agrees with history.
-- The last line applies the learned rule to a new claim. This is **prediction on unseen data**.
-
-Real models learn millions or billions of such numbers (called parameters) instead of one cut-off, but the idea is the same. One warning: 100% accuracy on ten examples proves nothing. Chapter 2 explains why models must be tested on data they have not seen.
-
-## 8. Interview questions
-
-### Q1. What is the difference between AI, machine learning, deep learning and generative AI?
-
-- **Say first:** They are nested. AI is the broad goal of machines doing tasks that need human judgement. Machine learning is the subset that learns rules from data. Deep learning is ML using many-layer neural networks. Generative AI is deep learning that creates new content, and LLMs are the best-known example for text.
-- **Then cover:** Give one example at each level. Mention that AI also includes non-learning approaches such as rules engines. Say that agents are systems built on top of LLMs, not a further subset of models.
-- **Architect angle:** Choosing the right layer for the problem is the real skill. Fraud scoring and forecasting are usually better served by classical ML. Use generative AI where language or content creation is central.
-- **Trap:** Describing everything as "AI" with no hierarchy, or saying generative AI has replaced ML.
-
-### Q2. How does machine learning differ from traditional programming?
-
-- **Say first:** In traditional programming a developer writes the rules and the program applies them to data. In machine learning you supply data and the right answers, and the machine finds the rules.
-- **Then cover:** Traditional code is deterministic and easy to audit. ML models are statistical: they are right most of the time and need evaluation, not just testing. ML shines where the rules are too many or too fuzzy to write.
-- **Architect angle:** If the rules are known and stable, code is cheaper, faster and fully explainable to a regulator. Reach for ML only when rules cannot be written.
-- **Trap:** Implying ML is always better. The likely follow-up is "when would you not use ML?"
-
-### Q3. What is the difference between discriminative and generative models?
-
-- **Say first:** Discriminative models classify or predict, such as "fraud or not". Generative models create new content, such as a summary or an image.
-- **Then cover:** Discriminative models are usually trained on labelled data and produce a label or score. Generative models learn the pattern of the data itself and sample from it. LLMs generate text token by token; diffusion models generate images by removing noise.
-- **Architect angle:** Risk differs. A wrong classification is a bounded error. A fluent generated answer can contain an invented fact that looks right, so generative output usually needs grounding, review or guardrails.
-- **Trap:** Treating LLMs and image generators as the same architecture. Both are generative but built differently.
-
-### Q4. What is AI engineering, and how is it different from ML engineering?
-
-- **Say first:** ML engineering builds and trains models. AI engineering builds reliable products on top of foundation models that someone else trained.
-- **Then cover:** AI engineers choose a model, shape it with prompts, retrieval, tools or fine-tuning, design evaluations, add guardrails, and run the system with monitoring and cost control. Summarise it as: creating a model is ML, making it work in the real world is AI engineering.
-- **Architect angle:** The deliverable is a system that meets targets for quality, safety, latency and cost, not a model. Name those four plus feedback.
-- **Trap:** Saying AI engineers "train LLMs". Training from scratch is rare because of the data, hardware and cost involved.
+ML engineering is about building and training models from data. AI engineering is about building reliable products on top of foundation models that someone else trained. Training a large model from scratch needs enormous data, hardware and budget, so very few companies do it. As an AI engineer I choose a model, shape it with prompts, retrieval, tools or fine-tuning, design the evaluation, add guardrails, and then run it with monitoring and cost control. The way I put it: creating a model is machine learning, making it work reliably in the real world is AI engineering. The deliverable is a system that hits targets for quality, safety, latency and cost, not a model.
 
 ### Q5. What does "production-ready" mean for an AI system?
 
-- **Say first:** It means the system is dependable under real use, not just impressive in a demo: measured quality, safety controls, acceptable latency, controlled cost, and a feedback loop.
-- **Then cover:** Walk the lifecycle: use case, model choice, evaluation, improvement (prompt, RAG, agents, fine-tuning), architecture, monitoring, feedback. Stress that evaluation is designed early, and re-run after any change to the model, prompt, data or tools.
-- **Architect angle:** The five goals trade off against each other. A client conversation should make those trade-offs explicit, for example "faster and cheaper means a smaller model, which we measure against your quality bar."
-- **Trap:** Listing only the model and the prompt. Interviewers want evaluation, monitoring and guardrails named.
+It means it holds up under real use, not just in a demo that worked on three hand-picked questions. I look at five things: quality, safety, latency, cost and feedback. And they trade off, so I'd make that explicit with the client, for example "faster and cheaper means a smaller model, and we'll measure it against your quality bar." In practice that means I've defined the use case and success measures up front, I have an evaluation set that I re-run whenever the model, prompt, data or tools change, I have guardrails, I trace and monitor in production, and I have a way to collect feedback and improve. If someone only mentions the model and the prompt, they're describing a demo.
 
-### Q6. What is AGI, and how does it differ from the AI you build with today?
+### Q6. What's AGI, and how is it different from what we build today?
 
-- **Say first:** AGI usually means AI that matches human ability across most cognitive tasks. Today's systems, even very capable LLMs, are not agreed to be AGI, and there is no accepted test for it.
-- **Then cover:** Current systems are strong but uneven: they can fail at simple tasks and state falsehoods confidently. Capabilities and definitions are debated, so avoid dates and predictions.
-- **Architect angle:** Design for the system you have. Evaluation, guardrails and human oversight exist because the models are fallible, whatever the long-term trajectory.
-- **Trap:** Predicting when AGI will arrive or claiming a current model is AGI. Both are unsupported.
+AGI, artificial general intelligence, usually means AI that can match human ability across most cognitive tasks, rather than being good at one thing. Today's systems, even very capable LLMs, are strong but uneven. They can write good code and then fail a simple task, and they can state falsehoods confidently. There's no agreed definition or test for AGI, and experts disagree about how far away it is, so I don't make predictions. What matters for my work is that the systems I deploy are fallible, so I design in evaluation, guardrails and human oversight regardless of where the long-term trajectory goes.
 
-## 9. Scenario exercise
+### Q7. When would you not use an LLM?
+
+When the rules are known and stable, I'd use plain code: it's deterministic, fast, nearly free and easy to audit. When the task is a prediction on structured data, like fraud scoring or demand forecasting, classical ML is usually more accurate, cheaper and more predictable. And when the steps are fixed, I'd use a workflow rather than an autonomous agent. I'd use an LLM where language or content creation is central: summarising documents, answering questions over text, extracting fields from messy emails. Often the best system mixes them, with an LLM handling the language part and normal code or ML handling the rest.
+
+## 6. Scenario exercise
 
 **The brief.** A regional insurer's head of claims says: "We want AI for claims. Our adjusters spend half their day reading documents and typing up case notes, and some fraud slips through. Can you make that go away?" You have ten minutes with them and little else is known.
 
 **Your task, from memory, before opening the answer:**
 
-1. Which parts of this are classical ML, which are generative AI, and which might just be plain software?
+1. Which parts are predictive ML, which are generative AI, and which might just be plain software?
 2. What are the first five questions you would ask?
 3. How would you define "success" so you can evaluate it?
 4. What is your biggest risk and how would you contain it?
@@ -264,37 +194,37 @@ Real models learn millions or billions of such numbers (called parameters) inste
 <details>
 <summary>Model answer</summary>
 
-**Split the problem.** "AI for claims" is at least three problems:
+**Split the problem.** "AI for claims" is three problems:
 
-- *Reading documents and drafting case notes:* generative AI (an LLM), with an adjuster reviewing every draft because the model can introduce plausible mistakes.
-- *Fraud slipping through:* a discriminative ML problem (score claims for risk), likely classical ML on historical claims data. An LLM is not the natural fit and may be worse and more expensive.
-- *Routing and fixed checks* (is the policy active, is the claim inside the limit): plain code or a fixed workflow. No model needed, and a rules engine is easier to audit.
+- *Reading documents and drafting case notes:* generative AI (an LLM), with an adjuster reviewing every draft, because the model can introduce plausible mistakes.
+- *Fraud slipping through:* a predictive ML problem. Score claims for risk using historical claims data. An LLM isn't the natural fit here and may be worse and more expensive.
+- *Fixed checks* (is the policy active, is the claim inside the limit): plain code or a fixed workflow. A rules engine is easier to audit.
 
-**First questions to ask:**
+**First questions:**
 
-1. What does "half their day" consist of exactly? Can we sample a day of real work?
-2. What data exists: past claims, labels for confirmed fraud, document formats, volumes?
-3. What are the regulatory and privacy constraints (personal and health data, where it may be processed, audit requirements)?
+1. What does "half their day" consist of? Can we sample a real day?
+2. What data exists: past claims, confirmed fraud labels, document formats, volumes?
+3. What are the regulatory and privacy constraints (personal and health data, where it can be processed, audit requirements)?
 4. Who is accountable for a wrong decision, and what must always stay with a human?
-5. What does failure cost: a missed fraud case, a wrongly delayed honest claim?
+5. What does failure cost: a missed fraud case, an honest claim wrongly delayed?
 
-**Success measures** (decide before building): time saved per claim on the drafting task, and adjuster edit rate of drafts; for fraud, precision and recall against confirmed outcomes, with agreed cost for false positives; plus latency, cost per claim, and safety (no leaked personal data). Build a small golden set of real cases reviewed by senior adjusters.
+**Success measures**, decided before building: time saved per claim and adjuster edit rate on drafts; for fraud, precision and recall against confirmed outcomes with an agreed cost for false positives; plus latency, cost per claim and safety (no leaked personal data). Build a small golden set of real cases reviewed by senior adjusters.
 
-**Biggest risk:** a fluent but wrong draft or a wrongly flagged customer being trusted without review. Contain it with human sign-off, citations back to the source documents, restricting the model to supplied documents, and logging every output for audit.
+**Biggest risk:** a fluent but wrong draft, or a wrongly flagged customer, being trusted without review. Contain it with human sign-off, citations back to source documents, restricting the model to supplied documents, and logging every output for audit.
 
-**Staging:** start with the drafting assistant (lowest risk, fastest value), measure, then address fraud scoring as a separate ML workstream.
+**Staging:** start with the drafting assistant (lowest risk, fastest value), measure, then handle fraud scoring as a separate ML workstream.
 
 </details>
 
-## 10. Key takeaways
+## 7. Key takeaways
 
-- AI ⊃ machine learning ⊃ deep learning ⊃ generative AI; LLMs are generative models for text, and agents are systems built around them.
-- Machine learning finds the rules from examples; traditional programming has a human write them. Use code when the rules are known.
-- AI engineering builds reliable products on foundation models; ML engineering trains the models.
-- Production-ready means quality, safety, latency, cost and feedback, and these trade off against each other.
-- Define evaluation early. There is no agreed definition or test for AGI, so do not build around it.
+- Traditional software is deterministic; generative AI is probabilistic. That's why AI needs evaluation and guardrails, not just tests.
+- AI ⊃ ML ⊃ deep learning ⊃ generative AI. LLMs are generative models; agents are systems built around them.
+- Predictive models decide or forecast (label, score, number). Generative models create new content.
+- Creating a model is ML; making it work reliably is AI engineering.
+- Production-ready = quality, safety, latency, cost, feedback, and they trade off.
 
-## 11. Further reading
+## 8. Further reading
 
 - Russell and Norvig, [*Artificial Intelligence: A Modern Approach*](https://aima.cs.berkeley.edu/): the standard textbook for the AI, agent and learning vocabulary used here.
 - Google, [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course): a free, practical introduction to ML concepts that Chapter 2 builds on.
