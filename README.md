@@ -31,7 +31,7 @@ Each chapter explains a concept from scratch, shows where it is used in industry
 
 ### Part 3: Shaping model behaviour
 
-9. [Prompt engineering](chapters/09-prompt-engineering/README.md): prompt anatomy, few-shot examples, chaining, structured outputs, versioning and prompt caching.
+9. [Prompt engineering](chapters/09-prompt-engineering/README.md): prompt anatomy, few-shot examples, chaining, structured outputs, prompts as software (versioning and testing) and the four-way ladder.
 10. [Fine-tuning and distillation](chapters/10-fine-tuning-and-distillation/README.md): when to adapt weights, LoRA and QLoRA, quantisation, distillation and small models.
 
 ### Part 4: Retrieval-Augmented Generation (RAG)
