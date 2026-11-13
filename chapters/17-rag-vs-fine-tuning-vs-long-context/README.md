@@ -64,7 +64,9 @@ Windows of around a million tokens exist on several frontier models (as of Nov 2
 - you need **precise citations** to specific passages;
 - **cost and latency** matter at volume, because RAG sends a few passages instead of the whole corpus on every call.
 
-What does the evidence say? A 2024 study from Google DeepMind and the University of Michigan compared the two across public datasets, using models of that time (Gemini 1.5 Pro, GPT-4o, GPT-3.5 Turbo). It found long-context models generally outperformed RAG when resources allowed, while RAG was much cheaper. The authors proposed **Self-Route**, a hybrid that lets the model decide per query whether the retrieved passages are enough, and only sends the full context when they aren't, and reported substantial cost savings with little quality loss. ```mermaid
+What does the evidence say? A 2024 study from Google DeepMind and the University of Michigan compared the two across public datasets, using models of that time (Gemini 1.5 Pro, GPT-4o, GPT-3.5 Turbo). It found long-context models generally outperformed RAG when resources allowed, while RAG was much cheaper. The authors proposed **Self-Route**, a hybrid that lets the model decide per query whether the retrieved passages are enough, and only sends the full context when they aren't, and reported substantial cost savings with little quality loss.
+
+```mermaid
 flowchart LR
     Q["Query"] --> R["Retrieve a few passages<br/>and try to answer (cheap)"]
     R --> J{"Are the passages<br/>enough?"}
