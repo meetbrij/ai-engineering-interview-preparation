@@ -16,7 +16,7 @@ The model never runs anything. Our application receives the proposal, checks it,
 
 A tool is described to the model with three things:
 
-| Part | What it is | Why it matters |
+| Part | What it is | What it does for you |
 |---|---|---|
 | **Name** | A short identifier, like `get_order_status` | How the model refers to the tool, and how you route the call |
 | **Description** | Plain-language text saying what the tool does and *when to use it* | The model chooses tools based mainly on this. It is the most important part |

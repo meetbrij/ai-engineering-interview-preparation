@@ -14,3 +14,7 @@ __pycache__/
 .venv/
 venv/
 .env
+
+# Project instructions for the AI assistant (private, not published)
+Claude.md
+CLAUDE.md

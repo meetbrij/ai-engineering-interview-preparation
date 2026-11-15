@@ -36,7 +36,7 @@ It's the same idea as an API gateway in conventional architecture, specialised f
 
 ### What a gateway centralises
 
-| Concern | What the gateway does | Why it matters |
+| Concern | What the gateway does | What it does for you |
 |---|---|---|
 | **Identity and keys** | Teams get **virtual keys** issued by the gateway. The real provider keys live only in the gateway | No provider keys in code. You can revoke one team's access without touching others |
 | **Budgets and limits** | Spend caps and rate limits per team, key, tenant or user | Stops one team's runaway agent from consuming everyone's quota or the month's budget ([Chapter 35](../35-reliability-scaling-and-streaming/README.md)) |

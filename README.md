@@ -41,14 +41,14 @@ Each chapter explains a concept from scratch, shows where it is used in industry
 13. [Vector search and databases](chapters/13-vector-search-and-databases/README.md): approximate nearest neighbour search, HNSW and IVF, BM25, dense and hybrid retrieval.
 14. [Improving retrieval](chapters/14-improving-retrieval/README.md): query transformation, reranking, context expansion, multi-hop and agentic RAG.
 15. [Enterprise RAG](chapters/15-enterprise-rag/README.md): permission-aware retrieval, citations, conflicting documents and PII.
-16. [Production RAG: architecture and scale](chapters/16-production-rag-architecture-and-scale/README.md): designing for 10 million to 100 million documents, latency, failures, real-time vs batch.
+16. [Production RAG architecture and scale](chapters/16-production-rag-architecture-and-scale/README.md): designing for 10 million to 100 million documents, latency, failures, real-time vs batch.
 17. [RAG vs fine-tuning vs long context](chapters/17-rag-vs-fine-tuning-vs-long-context/README.md): a decision framework you can defend.
 
 ### Part 5: Agents
 
 18. [From LLM calls to agents](chapters/18-from-llm-calls-to-agents/README.md): the agent loop, ReAct, agent types, and workflow vs agent.
 19. [Tool calling](chapters/19-tool-calling/README.md): tool schemas, who executes what, tool design, errors and permissions.
-20. [Agent protocols: MCP and A2A](chapters/20-agent-protocols-mcp-and-a2a/README.md): standard connections to tools, data and other agents.
+20. [Agent protocols, MCP and A2A](chapters/20-agent-protocols-mcp-and-a2a/README.md): standard connections to tools, data and other agents.
 21. [Agent memory and state](chapters/21-agent-memory-and-state/README.md): short-term, long-term and episodic memory, and keeping memory fresh.
 22. [Orchestration and harnesses](chapters/22-orchestration-and-harnesses/README.md): control loops, frameworks, checkpoints and human-in-the-loop gates.
 23. [Multi-agent systems](chapters/23-multi-agent-systems/README.md): supervisors and workers, error propagation, cost and tracing.
@@ -68,13 +68,13 @@ Each chapter explains a concept from scratch, shows where it is used in industry
 31. [Cost, latency and caching](chapters/31-cost-latency-and-caching/README.md): cutting cost, time to first token, prompt and semantic caching.
 32. [Observability and LLMOps](chapters/32-observability-and-llmops/README.md): tracing, prompt management, safe rollouts, rollback and feedback loops.
 33. [Inference engineering](chapters/33-inference-engineering/README.md): prefill and decode, KV cache, batching, quantisation and serving at scale.
-34. [Self-hosting open-weight models](chapters/34-self-hosting-open-weight-models/README.md): local and private deployment, and cost estimates.
+34. [Self-hosting open-weight models](chapters/34-self-hosting-open-weight-models/README.md): open-weight vs open source, hosting options on AWS, GPU sizing, serving engines and licences, and when self-hosting pays off.
 35. [Reliability, scaling and streaming](chapters/35-reliability-scaling-and-streaming/README.md): retries, fallbacks, SSE streaming and surviving 100x traffic.
 36. [LLM gateways and routing](chapters/36-llm-gateways-and-routing/README.md): one front door for many teams, model routers and rate limits.
-37. [Cloud reference architectures and multi-tenancy](chapters/37-cloud-reference-architectures-and-multi-tenancy/README.md): AWS, Azure and Google Cloud patterns and tenant isolation.
+37. [Cloud reference architectures and multi-tenancy](chapters/37-cloud-reference-architectures-and-multi-tenancy/README.md): a reference architecture on AWS (with an Azure and Google Cloud mapping) and tenant isolation.
 
 ### Part 8: Delivery and interviews
 
 38. [Forward deployed engineering](chapters/38-forward-deployed-engineering/README.md): discovery, scoping, proof of concept to production, and talking to clients.
-39. [AI system design](chapters/39-ai-system-design/README.md): a repeatable method for design questions, with worked examples.
-40. [Interview playbook](chapters/40-interview-playbook/README.md): answer structure, common traps and a rapid-fire revision sheet.
+39. [AI system design](chapters/39-ai-system-design/README.md): a repeatable method for design questions, with four worked examples.
+40. [Interview playbook](chapters/40-interview-playbook/README.md): answer structure, common traps, the corrected facts, recurring interview questions and a mock round.
