@@ -4,7 +4,7 @@ A structured guide to AI engineering, from foundations to production, written fo
 
 Each chapter explains a concept from scratch, shows where it is used in industry, and ends with interview questions, a scenario exercise and revision points.
 
-> **A living document.** These are my study notes, and I update them as I read and build. They were drafted with an AI assistant and are not yet reviewed line by line, so treat them as notes, check the linked sources, and expect changes. Facts last verified: **15 November 2026**. Read the [preface](PREFACE.md) for how this was made and who it is for. Corrections and ideas are welcome (see below).
+> **A living document.** These are my study notes, and I update them as I read and build. They were drafted with an AI assistant and are not yet reviewed line by line, so treat them as notes, check the linked sources, and expect changes. Facts last verified: **November 2026**. Read the [preface](PREFACE.md) for how this was made and who it is for. Corrections and ideas are welcome (see below).
 
 ## How to use this handbook
 
@@ -98,4 +98,4 @@ This is a living document and it will contain mistakes, especially in fast-movin
 
 ## Licence
 
-This work is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE). You may share and adapt it, including commercially, as long as you give appropriate credit and indicate if changes were made. Copyright (c) 2026 [Your name].
+This work is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE). You may share and adapt it, including commercially, as long as you give appropriate credit and indicate if changes were made. Copyright (c) 2026 Brijesh Bolar.

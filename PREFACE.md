@@ -1,10 +1,8 @@
 # Preface
 
-> **Draft.** This is a starting point written for me to edit. Placeholders are in [square brackets].
-
 ## Why this exists
 
-I have spent [N] years as a software engineer building and running production systems. When I decided to move into AI engineering, I found plenty of material, but it was scattered: vendor blogs, papers, courses, short videos, and interview question lists that disagreed with each other and sometimes got basic facts wrong. I wanted one place that explained the concepts in plain English, in the order you need them, and that showed how the pieces fit together in a real system.
+I have spent 15+ years as a software engineer building and running production systems. When I decided to move into AI engineering, I found plenty of material, but it was scattered: vendor blogs, papers, courses, short videos, and interview question lists that disagreed with each other and sometimes got basic facts wrong. I wanted one place that explained the concepts in plain English, in the order you need them, and that showed how the pieces fit together in a real system.
 
 So I started writing it down. This handbook is the result so far. It is my study notes, organised as a book, and it is meant to keep changing.
 
@@ -42,5 +40,5 @@ This is a living document. If you find an error, an outdated fact or a gap, plea
 
 Thank you for reading.
 
-[Your name]
-[Date]
+Brijesh Bolar
+November 2026
